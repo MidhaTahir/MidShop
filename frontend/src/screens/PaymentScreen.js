@@ -26,50 +26,30 @@ const PaymentScreen = ({ history }) => {
       <CheckoutSteps step1 step2 step3 />
       <h1>Payment Method</h1>
       <Form onSubmit={submitHandler}>
-        <Form.Group controlId="address">
-          <Form.Label>Address</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter address"
-            value={address}
-            required
-            onChange={(e) => setAddress(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+        <Form.Group>
+          <Form.Label as="legend">Select Method</Form.Label>
+          <Col>
+            <Form.Check
+              type="radio"
+              label="Paypal or Credit Card"
+              id="Paypal"
+              name="paymentmethod"
+              value="Paypal"
+              checked
+              onChange={() => setPaymentMethod("Paypal")}
+            ></Form.Check>
 
-        <Form.Group controlId="city">
-          <Form.Label>City</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter city"
-            value={city}
-            required
-            onChange={(e) => setCity(e.target.value)}
-          ></Form.Control>
+            {/* add new payment method */}
+            <Form.Check
+              type="radio"
+              label="Stripe"
+              id="Stripe"
+              name="paymentmethod"
+              value="Stripe"
+              onChange={() => setPaymentMethod("Stripe")}
+            ></Form.Check>
+          </Col>
         </Form.Group>
-
-        <Form.Group controlId="postalcode">
-          <Form.Label>PostalCode</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter postal code"
-            value={postalCode}
-            required
-            onChange={(e) => setPostalCode(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-
-        <Form.Group controlId="country">
-          <Form.Label>Country</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter country"
-            value={country}
-            required
-            onChange={(e) => setCountry(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-
         <Button type="submit" variant="primary">
           Continue
         </Button>
